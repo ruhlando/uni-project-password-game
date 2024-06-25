@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Password Game</title>
+</head>
+<body>
+<h1>Password Game</h1>
+<form action="#" th:action="@{/password-game}" method="post">
+  <label for="password">Enter Password:</label>
+  <input type="text" id="password" name="password">
+  <button type="submit">Validate</button>
+</form>
+<div th:if="${isValid != null}">
+  <p th:if="${isValid}" style="color: green;">Password is valid!</p>
+  <p th:if="${!isValid}" style="color: red;">Password is invalid!</p>
+</div>
+</body>
+</html>
