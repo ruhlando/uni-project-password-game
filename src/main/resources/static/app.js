@@ -1,61 +1,59 @@
-const stompClient = new StompJs.Client({
-    brokerURL: 'ws://localhost:8080/gs-guide-websocket'
+const client = new StompJs.Client({
+    brokerURL: 'ws://localhost:8080/gs-guide-websocket',
+    debug: function (str) {
+        console.log(str);
+    },
+    reconnectDelay: 5000,
+    heartbeatIncoming: 4000,
+    heartbeatOutgoing: 4000,
 });
 
-stompClient.onConnect = (frame) => {
-    setConnected(true);
-    console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/greetings', (greeting) => {
-        console.log(greeting);
-        showGreeting(greeting);
-    });
-};
-
-stompClient.onWebSocketError = (error) => {
+client.onWebSocketError = (error) => {
     console.error('Error with websocket', error);
 };
 
-stompClient.onStompError = (frame) => {
+client.onStompError = (frame) => {
     console.error('Broker reported error: ' + frame.headers['message']);
     console.error('Additional details: ' + frame.body);
 };
 
-function setConnected(connected) {
-    $("#connect").prop("disabled", connected);
-    $("#disconnect").prop("disabled", !connected);
-    if (connected) {
-        $("#conversation").show();
+
+client.onConnect = (frame) => {
+    document.getElementById('status').innerHTML = 'Connected';
+
+    client.subscribe('/topic/password', (callback) => {
+        document.getElementById('message').innerHTML = callback.body;
+        console.log("message received")
+    })
+};
+
+client.onDisconnect = (frame) => {
+    document.getElementById('status').innerHTML = '';
+}
+
+function sendMessage(destination, message) {
+    if (message){
+        client.publish({
+            destination: destination,
+            body: message,
+            skipContentLengthHeader: true
+        });
+    } else {
+        throw new Error('Empty message!');
     }
-    else {
-        $("#conversation").hide();
-    }
-    $("#greetings").html("");
 }
 
-function connect() {
-    stompClient.activate();
-}
+// connects to Server when page is fully loaded by client
+addEventListener('load', function (){
+    client.activate();
+})
 
-function disconnect() {
-    stompClient.deactivate();
-    setConnected(false);
-    console.log("Disconnected");
-}
+// executed by <input> in index.html
+function sendPassword(password){
+    console.log(password);
 
-function sendName() {
-    stompClient.publish({
-        destination: "/app/hello",
-        body: JSON.stringify({'name': $("#name").val()})
-    });
+    sendMessage(
+        '/app/password',
+        JSON.stringify({'password': password})
+    );
 }
-
-function showGreeting(message) {
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
-}
-
-$(function () {
-    $("form").on('submit', (e) => e.preventDefault());
-    $( "#connect" ).click(() => connect());
-    $( "#disconnect" ).click(() => disconnect());
-    $( "#send" ).click(() => sendName());
-});

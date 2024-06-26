@@ -1,4 +1,4 @@
-package com.bechtle_dhbw.uniProjectPasswordGame;
+package com.bechtle_dhbw.uniProjectPasswordGame.webSocket;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
