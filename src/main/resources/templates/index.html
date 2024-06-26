@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-  <title>Password Game</title>
+    <title>Hello WebSocket</title>
+    <link href="/css/main.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+    <script src="/js/app.js"></script>
 </head>
 <body>
-<h1>Password Game</h1>
-<form action="#" th:action="@{/password-game}" method="post">
-  <label for="password">Enter Password:</label>
-  <input type="text" id="password" name="password">
-  <button type="submit">Validate</button>
-</form>
-<div th:if="${isValid != null}">
-  <p th:if="${isValid}" style="color: green;">Password is valid!</p>
-  <p th:if="${!isValid}" style="color: red;">Password is invalid!</p>
-</div>
+<noscript>
+    <h2 style="color: #ff0000">
+        Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+        enabled. Please enable
+        Javascript and reload this page!
+    </h2>
+</noscript>
+
+<h1>Websocket</h1>
+<h2 id="status"></h2>
+
+<input oninput="sendPassword(this.value)" value="">
+<p id="message"></p>
 </body>
 </html>
