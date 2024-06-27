@@ -19,8 +19,6 @@ client.onStompError = (frame) => {
 
 
 client.onConnect = (frame) => {
-    document.getElementById('status').innerHTML = 'Connected';
-
     client.subscribe('/topic/password', (callback) => {
         document.getElementById('message').innerHTML = callback.body;
         console.log("message received")
