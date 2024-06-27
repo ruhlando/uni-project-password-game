@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ControllerClass {
 
-    private final ModelClass passwordValidator;
+    //private final ModelClass passwordValidator;
 
-    public ControllerClass() {
-        this.passwordValidator = new ModelClass();
-    }
+//    public ControllerClass() {
+//        this.passwordValidator = new ModelClass();
+//    }
 
     @GetMapping(value = "/")
     //sets URL path to file
