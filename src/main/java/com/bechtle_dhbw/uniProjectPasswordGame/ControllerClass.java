@@ -21,13 +21,13 @@ public class ControllerClass {
         return "index";
     }
 
-    @PostMapping("/password-game")
-    public String validatePassword(@RequestParam("password") String password, Model model) {
-        boolean isValid = passwordValidator.isValidPassword(password);
-        model.addAttribute("isValid", isValid);
-        model.addAttribute("password", password);
-        return "index";
-    }
-
+//    @PostMapping("/password-game")
+//    public String validatePassword(@RequestParam("password") String password, Model model) {
+//        boolean isValid = passwordValidator.isValidPassword(password);
+//        model.addAttribute("isValid", isValid);
+//        model.addAttribute("password", password);
+//        return "index";
+//    }
+//
 }
 
