@@ -1,8 +1,6 @@
 const client = new StompJs.Client({
     brokerURL: 'ws://localhost:8080/gs-guide-websocket',
-    debug: function (str) {
-        console.log(str);
-    },
+    //debug: function (str) {console.log(str);},
     reconnectDelay: 5000,
     heartbeatIncoming: 4000,
     heartbeatOutgoing: 4000,
@@ -20,14 +18,37 @@ client.onStompError = (frame) => {
 
 client.onConnect = (frame) => {
     client.subscribe('/topic/password', (callback) => {
-        document.getElementById('message').innerHTML = callback.body;
-        console.log("message received")
+        console.log(callback.body);
+        let json = JSON.parse(callback.body);
+
+        for (let i in json){
+            //hidden
+            console.log(json[i]);
+            switch (json[i].hidden) {
+                case true:
+                    console.log(json[i].name);
+                    document.getElementById(json[i].name).classList.add("is-hidden");
+                    break;
+                case false:
+                    document.getElementById(json[i].name).classList.remove("is-hidden");
+                    break;
+            }
+
+            //value
+            switch (json[i].value) {
+                case true:
+                    document.getElementById(json[i].name).classList.add("border-success");
+                    document.getElementById(json[i].name).classList.remove("border-danger");
+                    break;
+                case false:
+                    document.getElementById(json[i].name).classList.add("border-danger");
+                    document.getElementById(json[i].name).classList.remove("border-success");
+                    break;
+            }
+        }
+
     })
 };
-
-client.onDisconnect = (frame) => {
-    document.getElementById('status').innerHTML = '';
-}
 
 function sendMessage(destination, message) {
     if (message){
