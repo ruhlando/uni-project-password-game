@@ -1,16 +1,18 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class ContainsUpperCaseRule implements Rule{
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class MinLengthRule implements Rule {
     private boolean hidden = true;
 
     @Override
     public String getName() {
-        return "r3";
+        return "r1";
     }
 
     @Override
     public boolean validate(String password) {
-        return password.matches(".*[A-Z].*");
+        return password.length() >= 5;
     }
 
     @Override

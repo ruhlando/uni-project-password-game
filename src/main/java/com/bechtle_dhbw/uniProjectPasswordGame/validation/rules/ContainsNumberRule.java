@@ -1,16 +1,18 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class MinLengthRule implements Rule {
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class ContainsNumberRule implements Rule {
     private boolean hidden = true;
 
     @Override
     public String getName() {
-        return "r1";
+        return "r2";
     }
 
     @Override
     public boolean validate(String password) {
-        return password.length() >= 5;
+        return password.matches(".*\\d.*");
     }
 
     @Override

@@ -1,6 +1,8 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class ContainsRomanNumeralRule implements Rule{
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class ContainsRomanNumeralRule implements Rule {
     private boolean hidden = true;
     private static final String[] romanNumerals = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
 

@@ -1,16 +1,18 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class ContainsNumberRule implements Rule {
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class ContainsUpperCaseRule implements Rule {
     private boolean hidden = true;
 
     @Override
     public String getName() {
-        return "r2";
+        return "r3";
     }
 
     @Override
     public boolean validate(String password) {
-        return password.matches(".*\\d.*");
+        return password.matches(".*[A-Z].*");
     }
 
     @Override

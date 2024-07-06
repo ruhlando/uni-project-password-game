@@ -1,4 +1,4 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces;
 
 public interface Rule {
     String getName();

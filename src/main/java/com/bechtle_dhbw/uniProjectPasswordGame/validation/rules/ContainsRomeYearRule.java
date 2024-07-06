@@ -1,16 +1,18 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class ContainsSpecialCharacterRule implements Rule {
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class ContainsRomeYearRule implements Rule {
     private boolean hidden = true;
 
     @Override
     public String getName() {
-        return "r4";
+        return "r10";
     }
 
     @Override
     public boolean validate(String password) {
-        return password.matches(".*[!@#$%^&*()].*");
+        return password.contains("753");
     }
 
     @Override

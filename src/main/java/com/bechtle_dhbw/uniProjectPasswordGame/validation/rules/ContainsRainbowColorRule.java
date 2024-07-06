@@ -1,4 +1,6 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
+
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
 
 public class ContainsRainbowColorRule implements Rule {
     private boolean hidden = true;
@@ -12,7 +14,7 @@ public class ContainsRainbowColorRule implements Rule {
     @Override
     public boolean validate(String password) {
         for (String color : colors) {
-            if (password.contains(color)) {
+            if (password.toLowerCase().contains(color.toLowerCase())) {
                 return true;
             }
         }

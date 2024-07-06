@@ -1,6 +1,8 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
 
-public class ContainsSponsorRule implements Rule{
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+
+public class ContainsSponsorRule implements Rule {
     private boolean hidden = true;
     private static final String[] sponsors = {"Bechtle", "Apple", "DHBW"};
 

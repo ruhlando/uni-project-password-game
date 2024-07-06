@@ -1,5 +1,7 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation;
 
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.rules.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -88,7 +90,7 @@ public class RuleHandler {
     // New method for testing the validation
     public ArrayNode testValidation(String password) {
         ArrayNode result = validatePassword(password);
-        System.out.println(result.toPrettyString()); // Pretty print the JSON array
+        //System.out.println(result.toPrettyString()); // Pretty print the JSON array
         return result;
     }
 

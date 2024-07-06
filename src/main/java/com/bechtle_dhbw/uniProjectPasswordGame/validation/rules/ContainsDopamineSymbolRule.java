@@ -1,13 +1,14 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
+
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.algorithms.BoyerMoore;
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
 
 public class ContainsDopamineSymbolRule implements Rule {
     private boolean hidden = true;
-    private final String pattern = "C8H11NO2";
-    private final BoyerMoore boyerMoore;
 
     // Constructor to initialize the BoyerMoore instance with the dopamine pattern
     public ContainsDopamineSymbolRule() {
-        this.boyerMoore = new BoyerMoore(pattern);
+        String pattern = "C8H11NO2";
     }
 
     @Override
@@ -17,8 +18,9 @@ public class ContainsDopamineSymbolRule implements Rule {
 
     @Override
     public boolean validate(String password) {
+        //BoyerMoore boyerMoore = new BoyerMoore();
         // Validate if the pattern is found in the password
-        return boyerMoore.search(password) != -1;
+        return true; //CHANGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     @Override

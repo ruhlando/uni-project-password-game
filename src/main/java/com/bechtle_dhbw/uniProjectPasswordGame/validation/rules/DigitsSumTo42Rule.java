@@ -1,4 +1,6 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
+
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
 
 public class DigitsSumTo42Rule implements Rule {
     private boolean hidden = true;

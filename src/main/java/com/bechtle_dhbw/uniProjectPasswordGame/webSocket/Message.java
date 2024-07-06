@@ -1,10 +1,15 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.webSocket;
 
 public class Message {
     private String password;
+
+    Message(){
+    }
+
     Message(String password) {
         this.password = password;
     }
+
 
     public String getPassword() {
         return password;

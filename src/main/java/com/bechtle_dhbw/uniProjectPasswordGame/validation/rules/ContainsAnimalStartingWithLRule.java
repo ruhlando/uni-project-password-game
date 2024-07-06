@@ -1,4 +1,6 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.rules;
+
+import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
 
 public class ContainsAnimalStartingWithLRule implements Rule {
     private boolean hidden = true;
@@ -12,7 +14,7 @@ public class ContainsAnimalStartingWithLRule implements Rule {
     @Override
     public boolean validate(String password) {
         for (String animal : animals) {
-            if (password.contains(animal)) {
+            if (password.toLowerCase().contains(animal.toLowerCase())) {
                 return true;
             }
         }

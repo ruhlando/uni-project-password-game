@@ -1,4 +1,4 @@
-package com.bechtle_dhbw.uniProjectPasswordGame.rules;
+package com.bechtle_dhbw.uniProjectPasswordGame.validation.algorithms;
 
 import java.util.HashMap;
 import java.util.Map;
