@@ -1,7 +1,13 @@
 package com.bechtle_dhbw.uniProjectPasswordGame.rules;
 
-public class ContainsDopamineSmybolRule implements Rule {
+public class ContainsDopamineSymbolRule implements Rule {
     private boolean hidden = true;
+    private final String pattern = "C8H11NO2";
+    private final BoyerMoore boyerMoore;
+
+    public ContainsDopamineSymbolRule() {
+        this.boyerMoore = new BoyerMoore(pattern);
+    }
 
     @Override
     public String getName() {
@@ -10,7 +16,7 @@ public class ContainsDopamineSmybolRule implements Rule {
 
     @Override
     public boolean validate(String password) {
-        return password.contains("C8H11NO2");
+        return boyerMoore.search(password) != -1;
     }
 
     @Override
