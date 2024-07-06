@@ -5,6 +5,7 @@ public class ContainsDopamineSymbolRule implements Rule {
     private final String pattern = "C8H11NO2";
     private final BoyerMoore boyerMoore;
 
+    // Constructor to initialize the BoyerMoore instance with the dopamine pattern
     public ContainsDopamineSymbolRule() {
         this.boyerMoore = new BoyerMoore(pattern);
     }
@@ -16,6 +17,7 @@ public class ContainsDopamineSymbolRule implements Rule {
 
     @Override
     public boolean validate(String password) {
+        // Validate if the pattern is found in the password
         return boyerMoore.search(password) != -1;
     }
 

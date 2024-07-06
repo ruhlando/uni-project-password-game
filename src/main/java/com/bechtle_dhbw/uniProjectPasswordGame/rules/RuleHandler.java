@@ -12,10 +12,12 @@ import java.util.concurrent.Future;
 
 public class RuleHandler {
 
+    // List to hold all the rules
     private final List<Rule> rules;
 
+    // Constructor to initialize the rules
     public RuleHandler() {
-        rules = new ArrayList<>();
+        rules = new ArrayList<>(); // Using generics to ensure type safety
         rules.add(new MinLengthRule());
         rules.add(new ContainsNumberRule());
         rules.add(new ContainsUpperCaseRule());
@@ -30,32 +32,32 @@ public class RuleHandler {
         rules.add(new ContainsAnimalStartingWithLRule());
     }
 
+    // Method to validate the password against the rules
     public ArrayNode validatePassword(String password) {
-        // Phase 1: Bestimmen, welche Regeln sichtbar gemacht werden sollen
+        // Phase 1: Determine which rules to make visible
         boolean allPreviousValid = true;
 
         for (Rule rule : rules) {
-            // Wenn eine Regel einmal sichtbar ist, bleibt sie sichtbar
             if (!rule.isHidden()) {
-                // Validierung der aktuellen Regel
+                // Validate current rule if already visible
                 allPreviousValid = allPreviousValid && rule.validate(password);
             } else if (allPreviousValid) {
-                // Wenn alle vorherigen Regeln gültig sind, machen wir die nächste Regel sichtbar
+                // Make the next rule visible if all previous rules are valid
                 rule.setHidden(false);
-                // Nach dem Sichtbarmachen einer Regel, brechen wir die Schleife ab
-                break;
+                break; // Stop after making one rule visible
             } else {
-                // Wenn eine vorherige Regel ungültig ist, brechen wir die Schleife ab
+                // Stop if a previous rule is invalid
                 break;
             }
         }
 
-        // Phase 2: Parallel die Regeln validieren und das Ergebnis zurückgeben
-        ExecutorService executor = Executors.newFixedThreadPool(rules.size());
-        List<Callable<ObjectNode>> tasks = new ArrayList<>();
+        // Phase 2: Validate rules in *parallel* and return results
+        ExecutorService executor = Executors.newFixedThreadPool(rules.size()); // Using ExecutorService for parallelism
+        List<Callable<ObjectNode>> tasks = new ArrayList<>(); // Generics used to ensure type safety
 
         ObjectMapper mapper = new ObjectMapper();
 
+        // Creating tasks for each rule validation
         for (Rule rule : rules) {
             tasks.add(() -> {
                 ObjectNode result = mapper.createObjectNode();
@@ -69,25 +71,27 @@ public class RuleHandler {
         ArrayNode results = mapper.createArrayNode();
 
         try {
-            List<Future<ObjectNode>> futures = executor.invokeAll(tasks);
+            // Executing all tasks in parallel and collecting results
+            List<Future<ObjectNode>> futures = executor.invokeAll(tasks); // Using generics to ensure type safety
             for (Future<ObjectNode> future : futures) {
                 results.add(future.get());
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            executor.shutdown();
+            executor.shutdown(); // Properly shutting down the executor
         }
 
-        return results;
+        return results; // Returning the validation results
     }
 
-    // Neue Methode zum Testen
+    // New method for testing the validation
     public ArrayNode testValidation(String password) {
         ArrayNode result = validatePassword(password);
         System.out.println(result.toPrettyString()); // Pretty print the JSON array
         return result;
     }
+
 }
 
 
