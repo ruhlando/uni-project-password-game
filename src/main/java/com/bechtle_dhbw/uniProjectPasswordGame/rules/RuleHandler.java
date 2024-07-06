@@ -12,7 +12,7 @@ import java.util.concurrent.Future;
 
 public class RuleHandler {
 
-    private List<Rule> rules;
+    private final List<Rule> rules;
 
     public RuleHandler() {
         rules = new ArrayList<>();
@@ -24,7 +24,7 @@ public class RuleHandler {
         rules.add(new ContainsMonthRule());
         rules.add(new ContainsRomanNumeralRule());
         rules.add(new ContainsSponsorRule());
-        rules.add(new ContainsDopamineSmybolRule());
+        rules.add(new ContainsDopamineSymbolRule());
         rules.add(new ContainsRomeYearRule());
         rules.add(new ContainsRainbowColorRule());
         rules.add(new ContainsAnimalStartingWithLRule());
@@ -34,9 +34,7 @@ public class RuleHandler {
         // Phase 1: Bestimmen, welche Regeln sichtbar gemacht werden sollen
         boolean allPreviousValid = true;
 
-        for (int i = 0; i < rules.size(); i++) {
-            Rule rule = rules.get(i);
-
+        for (Rule rule : rules) {
             // Wenn eine Regel einmal sichtbar ist, bleibt sie sichtbar
             if (!rule.isHidden()) {
                 // Validierung der aktuellen Regel
