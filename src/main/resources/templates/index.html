@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>The Password Game</title>
     <meta charset="UTF-8">
@@ -47,15 +49,15 @@
 
             <div class="section">
                 <div class="columns is-flex-direction-column ">
-                    <div class="column is-hidden" id="r1">
+                    <div class="column  " id="r1">
                         <p class="title">Rule1</p>
                         <p>Password must be at least 5 characters</p>
                     </div>
-                    <div class="column is-hidden" id="r2">
+                    <div class="column " id="r2">
                         <p class="title">Rule2</p>
                         <p>Password must include a number</p>
                     </div>
-                    <div class="column is-hidden" id="r3">
+                    <div class="column " id="r3">
                         <p class="title">Rule3</p>
                         <p>Password must include an uppercase letter</p>
                     </div>
@@ -77,15 +79,24 @@
                     </div>
                     <div class="column is-hidden" id="r8">
                         <p class="title">Rule8</p>
-                        <p>Password must include one of our sponsors: Bechtle, Apple, und DHBW</p>
+                        <p>Password must include one of our sponsors:</p>
+                        <span class="icon">
+                            <img th:src="@{images/apple.png}">
+                        </span>
+                        <span class="icon">
+                            <img th:src="@{images/bechtle.png}">
+                        </span>
+                        <span class="icon">
+                            <img th:src="@{images/dhbw.png}">
+                        </span>
                     </div>
                     <div class="column is-hidden" id="r9">
                         <p class="title">Rule9</p>
-                        <p>Password must include the atomic symbol for Dopamine (C8H11NO2)</p>
+                        <p>Password must include the atomic symbol for Dopamine</p>
                     </div>
                     <div class="column is-hidden" id="r10">
                         <p class="title">Rule10</p>
-                        <p>Password must include the year Rome was founded (753 BC)</p>
+                        <p>Password must include the year Rome was founded</p>
                     </div>
                     <div class="column is-hidden" id="r11">
                         <p class="title">Rule11</p>

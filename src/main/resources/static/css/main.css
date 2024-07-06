@@ -20,3 +20,8 @@
 .border-danger {
     border: 2px solid var(--bulma-danger);
 }
+
+.column {
+    margin: 1rem;
+    border-radius: 8px;
+}
