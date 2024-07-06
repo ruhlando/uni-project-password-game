@@ -20,6 +20,7 @@ client.onConnect = (frame) => {
     client.subscribe('/topic/password', (callback) => {
         console.log(callback.body);
         let json = JSON.parse(callback.body);
+        let countTrueValues = 0;
 
         for (let i in json){
             //hidden
@@ -39,13 +40,20 @@ client.onConnect = (frame) => {
                 case true:
                     document.getElementById(json[i].name).classList.add("border-success");
                     document.getElementById(json[i].name).classList.remove("border-danger");
+                    countTrueValues++;
                     break;
                 case false:
                     document.getElementById(json[i].name).classList.add("border-danger");
                     document.getElementById(json[i].name).classList.remove("border-success");
                     break;
             }
+
+            if (countTrueValues === 12) {
+                document.getElementById("win").classList.add("is-active");
+                document.getElementById("winPw").innerHTML = document.getElementById("pw").value;
+            }
         }
+
 
     })
 };

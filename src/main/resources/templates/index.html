@@ -12,6 +12,20 @@
     <script src="/js/app.js"></script>
 </head>
 <body>
+
+<div id="win" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <section class="section">
+            <h1 class="title has-text-centered has-text-success">! YOU'VE WON !</h1>
+            <div class="image is-4by3">
+                <img th:src="@{images/computerTrash.gif}" alt="ComputerTrash">
+            </div>
+            <h1 id="winPw" class="sub-title has-text-centered Bechtle753555255.AprilVredLeopard"></h1>
+        </section>
+    </div>
+</div>
+
 <div id="page-container">
 
 <nav class="level">
@@ -34,7 +48,7 @@
                 <div class="field">
                     <label class="label">Password</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="the fun starts here..."
+                        <input id="pw" class="input" type="text" placeholder="the fun starts here..."
                                oninput="sendPassword(this.value)" value="">
                     </div>
                 </div>
@@ -49,15 +63,15 @@
 
             <div class="section">
                 <div class="columns is-flex-direction-column ">
-                    <div class="column  " id="r1">
+                    <div class="column  is-hidden" id="r1">
                         <p class="title">Rule1</p>
                         <p>Password must be at least 5 characters</p>
                     </div>
-                    <div class="column " id="r2">
+                    <div class="column is-hidden" id="r2">
                         <p class="title">Rule2</p>
                         <p>Password must include a number</p>
                     </div>
-                    <div class="column " id="r3">
+                    <div class="column is-hidden" id="r3">
                         <p class="title">Rule3</p>
                         <p>Password must include an uppercase letter</p>
                     </div>
@@ -81,13 +95,13 @@
                         <p class="title">Rule8</p>
                         <p>Password must include one of our sponsors:</p>
                         <span class="icon">
-                            <img th:src="@{images/apple.png}">
+                            <img th:src="@{images/apple.png}" alt="Apple">
                         </span>
                         <span class="icon">
-                            <img th:src="@{images/bechtle.png}">
+                            <img th:src="@{images/bechtle.png}" alt="Bechtle">
                         </span>
                         <span class="icon">
-                            <img th:src="@{images/dhbw.png}">
+                            <img th:src="@{images/dhbw.png}" alt="DHBW">
                         </span>
                     </div>
                     <div class="column is-hidden" id="r9">
