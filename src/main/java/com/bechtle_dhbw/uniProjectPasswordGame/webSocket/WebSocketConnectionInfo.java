@@ -6,16 +6,19 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+//This class is used to log clients (dis)connect in the console.
+//This is used for debugging.
 @Component
 public class WebSocketConnectionInfo {
 
-    //debug feedback for client connect / disconnect
+    //Client connects
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectEvent event) {
         StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
         System.out.println("Client connected: " + accessor.getSessionId());
     }
 
+    //Client disconnects
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
         StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
