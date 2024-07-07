@@ -4,7 +4,17 @@ import com.bechtle_dhbw.uniProjectPasswordGame.validation.interfaces.Rule;
 
 public class ContainsAnimalStartingWithLRule implements Rule {
     private boolean hidden = true;
-    private static final String[] animals = {"Lion", "Leopard", "Llama", "Lynx", "Lobster"};
+    private static final String[] animals = {
+            "Lion", "Leopard", "Llama", "Lynx", "Lobster",
+            "Ladybug", "Langur", "Lapwing", "Lark", "Lamprey",
+            "Lemming", "Lemur", "Leech", "Liger", "Limpet",
+            "Lizard", "Locust", "Loris", "Lungfish", "Lyrebird",
+            "Labyrinthfish", "Lacewing", "Leafbird", "Leafhopper", "Leafroller",
+            "Leatherback", "Limpkin", "Ling", "Lionfish",
+            "Lizardfish", "Loggerhead", "Longhorn", "Longspur", "Loon",
+            "Lorikeet", "Louse", "Ladybird", "Lancelet",
+            "Laughingthrush", "Leafcutter"
+    };
 
     @Override
     public String getName() {

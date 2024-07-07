@@ -50,7 +50,7 @@ client.onConnect = (frame) => {
 
             if (countTrueValues === 12) {
                 document.getElementById("win").classList.add("is-active");
-                document.getElementById("winPw").innerHTML = document.getElementById("pw").value;
+                document.getElementById("winPw").innerHTML = "Your Password is: <span style='font-weight: bold; color: #48c78e;'>" + document.getElementById("pw").value + "</span>";
             }
         }
 
