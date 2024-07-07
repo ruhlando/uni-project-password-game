@@ -35,7 +35,7 @@ public class BoyerMoore {
             for (int j = m - 1; j >= 0; j--) {
                 if (pattern.charAt(j) != text.charAt(i + j)) {
                     // Calculate the skip value based on the bad character table
-                    skip = Math.max(1, j - badCharacterTable.getOrDefault(text.charAt(i + j), -1));
+                    skip = badCharacterTable.getOrDefault(text.charAt(i + j), m);
                     break;
                 }
             }

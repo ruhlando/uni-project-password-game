@@ -14,7 +14,7 @@ public class ContainsSponsorRule implements Rule {
     @Override
     public boolean validate(String password) {
         for (String sponsor : sponsors) {
-            if (password.contains(sponsor)) {
+            if (password.toLowerCase().contains(sponsor.toLowerCase())) {
                 return true;
             }
         }
