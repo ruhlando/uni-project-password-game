@@ -13,6 +13,7 @@ public class DigitsSumTo42Rule implements Rule {
     @Override
     public boolean validate(String password) {
         int sum = 0;
+        // Calculate the sum of all digits in the password
         for (char c : password.toCharArray()) {
             if (Character.isDigit(c)) {
                 sum += Character.getNumericValue(c);
